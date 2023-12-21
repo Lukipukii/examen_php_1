@@ -1,7 +1,11 @@
 <?php
-// Genera un valor entre 1 y 100, y muestra si es par o si es impar
-
-//Aquí genero el valor
+$psswrd = "";
+if (isset($_POST['submit'])) {
+    for ($i = 0; $i < 8; $i++) {
+        $psswrd .= chr(rand(65,127));
+    }
+    $psswrd = "La contraseña generada es $psswrd";
+}
 
 
 ?>
@@ -23,6 +27,7 @@
     <legend>Acciones</legend>
 <form action="index.php" method="post">
     <input type="submit" value="Genera Password" name="submit">
+    <h2><?=$psswrd?></h2>
 </form>
 
 </fieldset>

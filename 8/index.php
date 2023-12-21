@@ -22,7 +22,12 @@ $productos = [
 // Genera un valor entre 1 y 100, y muestra si es par o si es impar
 
 //Aquí genero el valor
-
+$texto = "";
+foreach ($productos as $item => $datos) {
+        if ($datos['unidades'] > 2000 && $datos['precio'] > 2.10) {
+            $texto .= "<h1>Hay {$datos['unidades']} unidades de $item y cuesta {$datos['precio']}</h1>";
+        }
+}
 
 ?>
 <!doctype html>
@@ -37,15 +42,7 @@ $productos = [
 <body>
 
 <a style="%;color:darkblue;size:2rem" href="./../index.php">Volver</a>
-<fieldset>
-    <legend>Opciones</legend>
-    <input type="submit" value="Ver" name="submit">
-    <input type="submit" value="Insertar" name="submit">
-    <input type="submit" value="Borrar" name="submit">
-    <input type="submit" value="Consultar" name="submit">
-    <input type="submit" value="Editar" name="submit">
-</fieldset>
-
+<?=$texto?>
 </body>
 </html>
 

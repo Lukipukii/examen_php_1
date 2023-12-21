@@ -9,7 +9,10 @@
 //Nota 1: 9
 //Nota 2: 9
 */
-
+$notas = [];
+for ($i = 0; $i < 10; $i++) {
+    $notas[$i] = rand(0,10);
+}
 
 
 ?>
@@ -27,9 +30,12 @@
 <body>
 <a style="%;color:darkblue;size:2rem" href="./../index.php">Volver</a>
 
-<h1>
 <!--    Si no te lía mucho, deberías de visualizarlo aquí  -->
-</h1>
+    <?php
+    foreach ($notas as $index => $nota) {
+        echo "<h1>Nota $index: $nota</h1>";
+        }
+    ?>
 
 </body>
 </html>

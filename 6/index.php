@@ -1,8 +1,13 @@
 <?php
-// Genera un valor entre 1 y 100, y muestra si es par o si es impar
-
-//Aquí genero el valor
-
+$opcion = $_POST['submit'] ?? null;
+$texto = match ($opcion) {
+    "Ver" => "Has pulsado el botón de ver",
+    "Insertar" => "Has pulsado el botón de insertar",
+    "Borrar" => "Has pulsado el botón de borrar",
+    "Consultar" => "Has pulsado el botón de consultar",
+    "Editar" => "Has pulsado el botón de editar",
+    default => "Selecciona una opción",
+};
 
 ?>
 <!doctype html>
@@ -17,15 +22,17 @@
 <body>
 
 <a style="%;color:darkblue;size:2rem" href="./../index.php">Volver</a>
-<fieldset>
-    <legend>Opciones</legend>
-    <input type="submit" value="Ver" name="submit">
-    <input type="submit" value="Insertar" name="submit">
-    <input type="submit" value="Borrar" name="submit">
-    <input type="submit" value="Consultar" name="submit">
-    <input type="submit" value="Editar" name="submit">
-</fieldset>
-
+<form action="index.php" method="post">
+    <fieldset>
+        <legend>Opciones</legend>
+        <input type="submit" value="Ver" name="submit">
+        <input type="submit" value="Insertar" name="submit">
+        <input type="submit" value="Borrar" name="submit">
+        <input type="submit" value="Consultar" name="submit">
+        <input type="submit" value="Editar" name="submit">
+    </fieldset>
+</form>
+<h2><?=$texto?></h2>
 </body>
 </html>
 

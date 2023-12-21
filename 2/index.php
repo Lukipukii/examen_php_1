@@ -2,7 +2,8 @@
 // Genera un valor entre 1 y 100, y muestra si es par o si es impar
 
 //Aquí genero el valor
-
+$numRand = rand(1,100);
+$texto = $numRand % 2 == 0 ? "El número $numRand es par" : "El número $numRand es impar";
 
 ?>
 <!doctype html>
@@ -21,6 +22,7 @@
 
 <h1>
 <!--    Aquí lo visualizo  -->
+    <?=$texto?>
 </h1>
 
 </body>

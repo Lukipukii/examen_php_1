@@ -8,6 +8,46 @@
  *
  * Usa una estructura switch-case
  */
+
+$mes = rand(1,15);
+$nombre = null;
+$texto = "";
+switch ($mes) {
+    case 1:
+        $nombre = $nombre ?? "Enero";
+    case 3:
+        $nombre = $nombre ?? "Marzo";
+    case 5:
+        $nombre = $nombre ?? "Mayo";
+    case 7:
+        $nombre = $nombre ?? "Julio";
+    case 8:
+        $nombre = $nombre ?? "Agosto";
+    case 10:
+        $nombre = $nombre ?? "Octubre";
+    case 12:
+        $nombre = $nombre ?? "Diciembre";
+        $texto = "El mes generado es $nombre y tiene 31 días";
+        break;
+    case 4:
+        $nombre = $nombre ?? "Abril";
+    case 6:
+        $nombre = $nombre ?? "Junio";
+    case 9:
+        $nombre = $nombre ?? "Septiembre";
+    case 11:
+        $nombre = $nombre ?? "Noviembre";
+        $texto = "El mes generado es $nombre y tiene 30 días";
+        break;
+    case 2:
+        $nombre = $nombre ?? "Febrero";
+        $texto = "El mes generado es $nombre y tiene 28 o 29 días";
+        break;
+    default:
+        $texto = "EL mes generado es el $mes. No existe";
+        break;
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,8 +62,7 @@
 
 <a style="%;color:darkblue;size:2rem" href="./../index.php">Volver</a>
 <fieldset>
-
-
+    <h1><?=$texto?></h1>
 </fieldset>
 
 </body>

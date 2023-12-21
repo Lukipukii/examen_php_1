@@ -1,10 +1,12 @@
 <?php
-// Genera un valor entre 1 y 100, y muestra si es par o si es impar
-
-//Aquí genero el valor
+$array = isset($_POST['array']) ? unserialize($_POST['array']) : [];
 if (isset($_POST['submit'])){
- //Lee el nombre y lleva un contador de clicks
- //   Para ello deberías de tener un array asociativo por nombre
+    $nombre = $_POST['nombre'];
+    if (array_key_exists($nombre, $array)) {
+        $array[$nombre]++;
+    } else {
+        $array[$nombre] = 1;
+    }
 }
 
 ?>
@@ -20,14 +22,19 @@ if (isset($_POST['submit'])){
 <body>
 
 <a style="%;color:darkblue;size:2rem" href="./../index.php">Volver</a>
-<fieldset>
-    <legend>Datos de click</legend>
-    Nombre <input type="text" name="nombre" id=""><br />
-    <input type="submit" value="Haz click" name="submit">
-
-
-</fieldset>
-
+<form action="index.php" method="post">
+    <fieldset>
+        <legend>Datos de click</legend>
+        Nombre <input type="text" name="nombre" id=""><br />
+        <input type="submit" value="Haz click" name="submit">
+        <input type="hidden" value=<?=serialize($array)?> name="array">
+    </fieldset>
+</form>
+<?php
+foreach ($array as $index => $clicks) {
+    echo "<h1>$index ha hecho $clicks click/s</h1>";
+}
+?>
 </body>
 </html>
 

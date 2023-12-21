@@ -1,8 +1,32 @@
 <?php
-// Genera un valor entre 1 y 100, y muestra si es par o si es impar
+function sumar(string $num1, string $num2) : int | string {
+    return is_numeric($num1) && is_numeric($num2) ? $num1 + $num2 : "No dejes espacios en blanco y pon solo valores númericos";
+}
+function restar(string $num1, string $num2) : int | string {
+    return is_numeric($num1) && is_numeric($num2) ? $num1 - $num2 : "";
+}
+function dividir(string $num1, string $num2) : float | string {
+    if ($num2 == 0) {
+        return "No se puede dividir por 0";
+    }
+    return is_numeric($num1) && is_numeric($num2) ? $num1 / $num2 : "No dejes espacios en blanco y pon solo valores númericos";
+}
+function multiplicar(string $num1, string $num2) : int | string {
+    return is_numeric($num1) && is_numeric($num2) ? $num1 * $num2 : "No dejes espacios en blanco y pon solo valores númericos";
+}
+$num1 = $_POST['op1'];
+$num2 = $_POST['op2'];
+$resultado = null;
+if (isset($_POST['submit'])) {
 
-//Aquí genero el valor
-
+    $resultado = match ($_POST['operador']) {
+        "+" => sumar($num1, $num2),
+        "-" => restar($num1, $num2),
+        "*" => multiplicar($num1, $num2),
+        "/" => dividir($num1, $num2),
+        default => "default"
+    };
+}
 
 ?>
 <!doctype html>
@@ -19,20 +43,23 @@
 
 <a style="%;color:darkblue;size:2rem" href="./../index.php">Volver</a>
 
-<fieldset>
-    <legend>Calculadora</legend>
-    <input type="text" name="op1" id="" placeholder="Operador 1">
-    <select name="operador" id="">
-        <option value="+">+</option>
-        <option value="-">-</option>
-        <option value="*">*</option>
-        <option value="/">/</option>
-    </select>
-    <input type="text" name="op1" id="" placeholder="Operador 2">
-    <input type="submit" value="Opearar" value="submit">
-</fieldset>
+<form action="index.php" method="post">
+    <fieldset>
+        <legend>Calculadora</legend>
+        <input type="text" name="op1" placeholder="Operando 1">
+        <select name="operador">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" name="op2" placeholder="Operando 2">
+        <input type="submit" value="Operar" name="submit">
+    </fieldset>
+</form>
 <h1>
 <!--    Aquí el resultado -->
+    <?=$resultado?>
 </h1>
 
 </body>
